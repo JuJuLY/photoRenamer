@@ -48,6 +48,7 @@ public class viewFolder {
 //		    
 //		}
 //		return nameList;
+
 		ArrayList<String> nameList = new ArrayList<String>();
 		for (Photo pic : photoList){
 			String n = pic.getOrigName();
@@ -92,32 +93,18 @@ public class viewFolder {
 	
 	public static void main(String[] args) {
 		
-	    Desktop desktop = Desktop.getDesktop();
-	    File dirToOpen = null;
-	    try {
-	        dirToOpen = new File("c:\\207a2images");
-	        desktop.open(dirToOpen);
-	    } catch (IOException e) {
-	    	System.out.println("File Not Found");
-	    	
-	    }
-
-	    ArrayList<Photo> aaa = getPhotoList("C:\\207a2images");
-//		aaa.showContents();
-//		 System.out.println(aaa);
-		System.out.println(showContents(aaa));
+//	    Desktop desktop = Desktop.getDesktop();
+//	    File dirToOpen = null;
+//	    try {
+//	        dirToOpen = new File("c:\\207a2images");
+//	        desktop.open(dirToOpen);
+//	    } catch (IOException e) {
+//	    	System.out.println("File Not Found");
+//	    	
+//	    }
+//
+//	    ArrayList<Photo> aaa = getPhotoList("C:\\207a2images");
+//		System.out.println(showContents(aaa));
 	}
 }
-
-
-//do we need to deal with other files which are not images?
-//probably throwing exceptions
-//how we are supposed to show the image files without using the GUI
-//when deleting a tag then it basically means two things(need to delete from all, but can call methods )
-//use any exception you like to deal with children of either image file or directory
-//or use for loop to check types before anything else
-
-//rename method can be cut and paste names from the list that we already have or shown in the page
-//to show files, your program is supposed to deal with one specific directory, either by letting MyPC to choose a folder in yoUR os
-//then come back to your program, or to type in the path to the directory in your program and simply deal with that folder
 

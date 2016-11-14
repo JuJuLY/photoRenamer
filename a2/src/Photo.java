@@ -151,39 +151,39 @@ public class Photo {
 	
 	public static void main(String[] args) throws SecurityException, IOException {
 		
-		File castle111 = new File("c:\\forPhoto.jpg");
-		Tag tag1 = new Tag("castle");
-		Tag tag2 = new Tag("buildings");
-		Tag tag3 = new Tag("sweets");
-		Photo photoA = new Photo(castle111);
-		System.out.println(photoA.name);
-		System.out.println(photoA.getOrigName());
-		photoA.addTag(tag1);
-		photoA.addTag(tag2);
-		photoA.addTag(tag3);
-		System.out.println(photoA.name);
-		photoA.deleteTag(tag3);
-		System.out.println(photoA.name);
-		
-		for (Tag eachTag : photoA.tagList){
-			System.out.println(eachTag.getName());
-		}
-		photoA.showAllNames();
-		System.out.print("-----------------------------------\n");
-		for(File name: photoA.nameLog ){
-			System.out.print(name.getName());
-			
-		}
-		System.out.print("\n-----------------------------------\n");
-		System.out.println(photoA.name);
-		photoA.undoName("@castleforPhoto.jpg");
-		System.out.println(photoA.name);
-		System.out.print("-----------------------------------\n");
-		System.out.println(photoA.name);
-		if(!photoA.name.getName().equals("@buildings@castleforPhoto.jpg")){
-			System.out.println(photoA.name.getName() + " and " + "@buildings@castleforPhoto.jpg" + " are not the same");
-		}
-		
+//		File castle111 = new File("c:\\forPhoto.jpg");
+//		Tag tag1 = new Tag("castle");
+//		Tag tag2 = new Tag("buildings");
+//		Tag tag3 = new Tag("sweets");
+//		Photo photoA = new Photo(castle111);
+//		System.out.println(photoA.name);
+//		System.out.println(photoA.getOrigName());
+//		photoA.addTag(tag1);
+//		photoA.addTag(tag2);
+//		photoA.addTag(tag3);
+//		System.out.println(photoA.name);
+//		photoA.deleteTag(tag3);
+//		System.out.println(photoA.name);
+//		
+//		for (Tag eachTag : photoA.tagList){
+//			System.out.println(eachTag.getName());
+//		}
+//		photoA.showAllNames();
+//		System.out.print("-----------------------------------\n");
+//		for(File name: photoA.nameLog ){
+//			System.out.print(name.getName());
+//			
+//		}
+//		System.out.print("\n-----------------------------------\n");
+//		System.out.println(photoA.name);
+//		photoA.undoName("@castleforPhoto.jpg");
+//		System.out.println(photoA.name);
+//		System.out.print("-----------------------------------\n");
+//		System.out.println(photoA.name);
+//		if(!photoA.name.getName().equals("@buildings@castleforPhoto.jpg")){
+//			System.out.println(photoA.name.getName() + " and " + "@buildings@castleforPhoto.jpg" + " are not the same");
+//		}
+//		
 		
 		
 		

@@ -1,7 +1,5 @@
 package a2Package;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 
 /**
  * Construct Tag for the system
@@ -33,19 +31,8 @@ public class Tag {
 	}
 
     
-	public static void main(String[] args) throws FileNotFoundException {	
-	
-	PrintWriter outputfile = new PrintWriter("logger");
-//    outputfile.print("your output" + "\n");
-//    outputfile.print("second line" + "\n");
-//    outputfile.print("third line" + "\n");
-	outputfile.append("trying" + "\n");
-//	outputfile.append("\n");
-	outputfile.append("is this working?");
-	outputfile.append("blahblah");
-	
-    outputfile.close();
-    System.out.println("hhhhh");
+	public static void main(String[] args) {	
+		
 	}
 
 }

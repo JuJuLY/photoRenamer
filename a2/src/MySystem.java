@@ -43,20 +43,20 @@ public class MySystem {
 	 * A logger to keep track of all renaming actions
 	 */
 	static final Logger renamingLog = Logger.getLogger(MySystem.class.getName());
+	/**
+	 * ArrayList of all the photos in this directory
+	 */
+	public ArrayList<Photo> systemPhotoList;
 	
 	
-//	public void writeToFile() throws IOException{
-//		// create a File tagCollection from the 
-//		// txt file in OS in path c:\\ tagCollection.txt 
-//		File tagCollection = new File  ("c:/tagCollection.txt");
-//		FileWriter myFW = new FileWriter(tagCollection.getAbsoluteFile());
-//		BufferedWriter myBW = new BufferedWriter(myFW);
-//		for (Tag element : existingTags){
-//			myBW.write(element.getName());
-//		}
-//		
-//		myBW.close();
-//	}
+	/**
+	 * Construct a MySystem object with path systemPath
+	 * @param name 
+	 *			set name for this Photo
+	 */
+	public MySystem(String systemPath){
+		this.systemPhotoList = viewFolder.getPhotoList(systemPath);
+	}
 	
 	/**
 	 * create and edit a text file that can keep track of all the available tags
@@ -100,15 +100,7 @@ public class MySystem {
 	 */
 	
 	public void createTag(Tag createdTag) throws SecurityException, IOException{
-		this.existingTags.add(createdTag);
-//		writeToFile();
-//		tagCollection.info(createTagCollection());
-//		FileHandler fhandler = new FileHandler("newlogger", true);
-//        tagCollection.addHandler(fhandler);
-//		for( Tag tag : existingTags){
-//			writeToTagFile(tag.getName() + "\n");
-//		}
-		
+		this.existingTags.add(createdTag);		
 		writeToTagFile(showTagCollection());
 		
 	}
@@ -123,11 +115,6 @@ public class MySystem {
 	 */
 	public void removeTag(Tag deletedTag) throws SecurityException, IOException{
 		this.existingTags.remove(deletedTag);
-//		writeToFile();
-//		tagCollection.info(createTagCollection());
-		
-//		FileHandler fhandler = new FileHandler("newlogger", true);
-//        tagCollection.addHandler(fhandler);
 		writeToTagFile(showTagCollection());
 	}
 	
@@ -143,9 +130,9 @@ public class MySystem {
 	 * @throws IOException
 	 */
 	
-	public void removeAllTag(ArrayList<Photo> photoList, Tag deletedTag) throws SecurityException, IOException{
-		
-		for (Photo each : photoList){
+	public void removeAllTag(Tag deletedTag) throws SecurityException, IOException{
+		removeTag(deletedTag);
+		for (Photo each : this.systemPhotoList){
 			if (each.tagList.contains(deletedTag)){
 				each.deleteTag(deletedTag);
 			}
@@ -172,29 +159,23 @@ public class MySystem {
 	}
 
 	public static void main(String args[]) throws SecurityException, IOException {
-//	File tagCollection = new File ("c:\\tagCollection.txt");
-//	if (! tagCollection.exists()){
-//		try {
-//			tagCollection.createNewFile();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			System.out.println("tagCollection does not exist");
-//		}
-//	}
 		
-	MySystem system1 = new MySystem();
-	Tag tag1 = new Tag("castle");
-	Tag tag2 = new Tag("buildings");
-	Tag tag3 = new Tag("sweets");
-	Tag tag4 = new Tag("hoildays");
-	system1.createTag(tag1);
-	system1.createTag(tag2);
-	system1.createTag(tag3);
-	system1.createTag(tag4);
-	System.out.println(system1.showTagCollection());	
-	system1.removeTag(tag2);
-	System.out.println(system1.showTagCollection());	
-//	writeToTagFile("this is the third line i wrote");
+//	MySystem system1 = new MySystem("C:\\207a2images");
+//	Tag tag1 = new Tag("castle");
+//	Tag tag2 = new Tag("buildings");
+//	Tag tag3 = new Tag("sweets");
+//	Tag tag4 = new Tag("holidays");
+//	Tag tag5 = new Tag("forests");
+//	system1.createTag(tag1);
+//	system1.createTag(tag2);
+//	system1.createTag(tag3);
+//	system1.createTag(tag4);
+//	system1.createTag(tag5);
+//	System.out.println(system1.showTagCollection());	
+//	system1.removeTag(tag2);
+//	System.out.println(system1.showTagCollection());
+//	system1.removeAllTag(tag3);
+//	System.out.println(system1.showTagCollection());
 		
 	}
 	
