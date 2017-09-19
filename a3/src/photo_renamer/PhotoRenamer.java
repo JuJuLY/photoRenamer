@@ -101,7 +101,7 @@ public class PhotoRenamer implements ActionListener {
 					// System.out.println("closed");
 
 					MySystem.clearTagFile();
-					for (Tag oneTag : MySystem.existingTags) {
+					for (Tag oneTag : MySystem.getExistingTags()) {
 						try {
 							MySystem.writeToTagFile(oneTag.getName());
 						} catch (IOException e) {
@@ -279,7 +279,7 @@ public class PhotoRenamer implements ActionListener {
 
 			JLabel removeTag = new JLabel("Delete Tag: ", JLabel.CENTER);
 			Choice TagChooser = new Choice();
-			for (String previousTagName : newPhoto.tagList) {
+			for (String previousTagName : newPhoto.getTagList()) {
 				TagChooser.add(previousTagName);
 			}
 			JButton deleteButton = new JButton("Delete");
@@ -332,7 +332,7 @@ public class PhotoRenamer implements ActionListener {
 			ShowTagFrame.setVisible(true);
 			headerLabel.setText("All the tags attached to this photo: ");
 
-			String[] tagnames = newPhoto.tagList.toArray(new String[newPhoto.tagList.size()]);
+			String[] tagnames = newPhoto.getTagList().toArray(new String[newPhoto.getTagList().size()]);
 
 			JList tagJlist = new JList(tagnames);
 			tagJlist.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -381,7 +381,7 @@ public class PhotoRenamer implements ActionListener {
 			ViewNamesFrame.setVisible(true);
 			headerLabel.setText("Scroll to see all the names this photo has had");
 			Choice NameChooser = new Choice();
-			for (File previousTagName : newPhoto.nameLog) {
+			for (File previousTagName : newPhoto.getNameLog()) {
 				NameChooser.add(previousTagName.getName());
 			}
 			JButton revertButton = new JButton("Revert");

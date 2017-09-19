@@ -13,7 +13,7 @@ public class Photo {
 	/**
 	 * the image file pointed by this photo
 	 */
-	public File name;
+	private File name;
 	/**
 	 * the original name of this photo file
 	 */
@@ -21,11 +21,11 @@ public class Photo {
 	/**
 	 * the tagList of this Photo which contains all the tags it has
 	 */
-	public ArrayList<String> tagList = new ArrayList<String>();
+	private ArrayList<String> tagList = new ArrayList<String>();
 	/**
 	 * the nameLog of this Photo which contains all its previous names
 	 */
-	public ArrayList<File> nameLog = new ArrayList<File>();
+	private ArrayList<File> nameLog = new ArrayList<File>();
 
 	/**
 	 * Construct a photo from an image file photoFile, and add this Photo to the
@@ -40,7 +40,7 @@ public class Photo {
 		this.name = photoFile;
 		nameLog.add(photoFile);
 		this.origName = this.name.getName();
-		MySystem.systemPhotoList.add(this);
+		MySystem.getSystemPhotoList().add(this);
 	}
 
 	/**
@@ -77,9 +77,9 @@ public class Photo {
 		FileHandler myfh = new FileHandler(PhotoRenamer.yourPath + "/renaminglogfile.log", true);
 
 		SimpleFormatter myfmt = new SimpleFormatter();
-		MySystem.renamingLog.addHandler(myfh);
+		MySystem.getRenaminglog().addHandler(myfh);
 		myfh.setFormatter(myfmt);
-		MySystem.renamingLog.info("OldName is: " + this.name.getName() + " , " + "NewName is: " + newName);
+		MySystem.getRenaminglog().info("OldName is: " + this.name.getName() + " , " + "NewName is: " + newName);
 		File newNameFile = new File(this.name.getParent(), newName);
 		this.name.renameTo(newNameFile);
 		this.name = newNameFile;
@@ -165,42 +165,104 @@ public class Photo {
 
 	public static void main(String[] args) throws SecurityException, IOException {
 
-		// File castle111 = new File("c:\\forPhoto.jpg");
-		// Tag tag1 = new Tag("castle");
-		// Tag tag2 = new Tag("buildings");
-		// Tag tag3 = new Tag("sweets");
-		// Photo photoA = new Photo(castle111);
-		// System.out.println(photoA.name);
-		// System.out.println(photoA.getOrigName());
-		// photoA.addTag(tag1);
-		// photoA.addTag(tag2);
-		// photoA.addTag(tag3);
-		// photoA.addTag(tag1);
-		// System.out.println(photoA.name);
-		// photoA.deleteTag(tag3);
-		// System.out.println(photoA.name);
-		//
-		// for (Tag eachTag : photoA.tagList){
-		// System.out.println(eachTag.getName());
-		// }
-		// photoA.showAllNames();
-		// System.out.print("-----------------------------------\n");
-		// for(File name: photoA.nameLog ){
-		// System.out.print(name.getName());
-		//
-		// }
-		// System.out.print("\n-----------------------------------\n");
-		// System.out.println(photoA.name);
-		// photoA.undoName("@castleforPhoto.jpg");
-		// System.out.println(photoA.name);
-		// System.out.print("-----------------------------------\n");
-		// System.out.println(photoA.name);
-		// if(!photoA.name.getName().equals("@buildings@castleforPhoto.jpg")){
-		// System.out.println(photoA.name.getName() + " and " +
-		// "@buildings@castleforPhoto.jpg" + " are not the same");
-		// }
-		//
+		 File castle111 = new File("c:\\forPhoto.jpg");
+		 Tag tag1 = new Tag("castle");
+		 Tag tag2 = new Tag("buildings");
+		 Tag tag3 = new Tag("sweets");
+		 Photo photoA = new Photo(castle111);
+		 System.out.println(photoA.name);
+		 System.out.println(photoA.getOrigName());
+		 photoA.addTag(tag1);
+		 photoA.addTag(tag2);
+		 photoA.addTag(tag3);
+		 photoA.addTag(tag1);
+		 System.out.println(photoA.name);
+		 photoA.deleteTag(tag3);
+		 System.out.println(photoA.name);
+		
+		 for (String eachTagName : photoA.getTagList()){
+		 System.out.println(eachTagName);
+		 }
+		 photoA.showAllNames();
+		 System.out.print("-----------------------------------\n");
+		 for(File name: photoA.nameLog ){
+		 System.out.print(name.getName());
+		
+		 }
+		 System.out.print("\n-----------------------------------\n");
+		 System.out.println(photoA.name);
+		 photoA.undoName("@castleforPhoto.jpg");
+		 System.out.println(photoA.name);
+		 System.out.print("-----------------------------------\n");
+		 System.out.println(photoA.name);
+		 if(!photoA.name.getName().equals("@buildings@castleforPhoto.jpg")){
+		 System.out.println(photoA.name.getName() + " and " +
+		 "@buildings@castleforPhoto.jpg" + " are not the same");
+		 }
+		
 
+	}
+
+	/**
+	 * get the name of this Photo File
+	 * @return name of this file
+	 */
+	public File getName() {
+		return name;
+	}
+	
+	/**
+	 * set the File that this Photo is converted from 
+	 * @param name 
+	 * 			the original File that this Photo is converted from
+	 */
+
+	public void setName(File name) {
+		this.name = name;
+	}
+
+	/**
+	 * return the ArrayList that contains the names of Tags that this Photo contains
+	 * @return the array list of Tags
+	 */
+	public ArrayList<String> getTagList() {
+		return tagList;
+	}
+	/**
+	 * set the Taglist of this Photo
+	 * @param tagList 
+	 * 				the list of Tag that this Photo would have
+	 */
+
+	public void setTagList(ArrayList<String> tagList) {
+		this.tagList = tagList;
+	}
+	
+	/**
+	 * the name Log that the Photo has
+	 * @return the nameLog of this Photo which contains all its previous names
+	 */
+
+	public ArrayList<File> getNameLog() {
+		return nameLog;
+	}
+	/**
+	 * set this Photo's name Log
+	 * @param nameLog
+	 * 				the name Log that this Photo 
+	 */
+
+	public void setNameLog(ArrayList<File> nameLog) {
+		this.nameLog = nameLog;
+	}
+	/**
+	 * set the original name of this File
+	 * @param origName
+	 * 				the original name that this Photo has
+	 */
+
+	public void setOrigName(String origName) {
+		this.origName = origName;
 	}
 
 }

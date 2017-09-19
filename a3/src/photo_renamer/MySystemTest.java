@@ -69,8 +69,8 @@ public class MySystemTest {
 	// test if delete one Tag from the System works
 	@Test
 	public void testDeleteTag() throws SecurityException, IOException {
-		MySystem.systemPhotoList.add(pho1);
-		MySystem.systemPhotoList.add(pho2);
+		MySystem.getSystemPhotoList().add(pho1);
+		MySystem.getSystemPhotoList().add(pho2);
 		Tag tag1 = new Tag("buildings");
 		Tag tag2 = new Tag("greens");
 		Tag tag3 = new Tag("sweets");

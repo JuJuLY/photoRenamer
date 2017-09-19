@@ -32,7 +32,7 @@ public class MySystem {
 	/**
 	 * ArrayList of all available Tags
 	 */
-	public static ArrayList<Tag> existingTags = new ArrayList<Tag>();
+	private static ArrayList<Tag> existingTags = new ArrayList<Tag>();
 	/**
 	 * A logger to keep track of all Tags
 	 */
@@ -40,12 +40,12 @@ public class MySystem {
 	/**
 	 * A logger to keep track of all renaming actions
 	 */
-	static final Logger renamingLog = Logger.getLogger(MySystem.class.getName());
+	private static final Logger renamingLog = Logger.getLogger(MySystem.class.getName());
 	/**
 	 * ArrayList of all the photos in this directory
 	 */
 
-	public static ArrayList<Photo> systemPhotoList = new ArrayList<Photo>();
+	private static ArrayList<Photo> systemPhotoList = new ArrayList<Photo>();
 
 	/**
 	 * Construct a MySystem object with path systemPath
@@ -194,7 +194,7 @@ public class MySystem {
 	public static void removeTagFromAll(Tag deletedTag) throws SecurityException, IOException {
 
 		for (Photo each : MySystem.systemPhotoList) {
-			if (each.tagList.contains(deletedTag)) {
+			if (each.getTagList().contains(deletedTag)) {
 				each.deleteTag(deletedTag);
 			}
 		}
@@ -222,24 +222,44 @@ public class MySystem {
 	// }
 
 	public static void main(String args[]) throws SecurityException, IOException {
-		//
-		// Tag tag1 = new Tag("castle");
-		// Tag tag2 = new Tag("buildings");
-		// Tag tag3 = new Tag("sweets");
-		// Tag tag4 = new Tag("holidays");
-		// Tag tag5 = new Tag("forests");
-		// MySystem.createTag(tag1);
-		// MySystem.createTag(tag2);
-		// MySystem.createTag(tag3);
-		// MySystem.createTag(tag4);
-		// MySystem.createTag(tag5);
-		// System.out.println(MySystem.systemPhotoList);
-		// System.out.println(MySystem.showTagCollection());
-		// MySystem.removeTag(tag2);
-		// System.out.println(MySystem.showTagCollection());
-		// MySystem.removeTagFromAll(tag3);
-		// System.out.println(MySystem.showTagCollection());
-		//
+
+		Tag tag1 = new Tag("castle");
+		Tag tag2 = new Tag("buildings");
+		Tag tag3 = new Tag("sweets");
+		Tag tag4 = new Tag("holidays");
+		Tag tag5 = new Tag("forests");
+		MySystem.createTag(tag1);
+		MySystem.createTag(tag2);
+		MySystem.createTag(tag3);
+		MySystem.createTag(tag4);
+		MySystem.createTag(tag5);
+		System.out.println(MySystem.systemPhotoList);
+		System.out.println(MySystem.showTagCollection());
+		MySystem.removeTag(tag2.getName());
+		System.out.println(MySystem.showTagCollection());
+		MySystem.removeTagFromAll(tag3);
+		System.out.println(MySystem.showTagCollection());
+
+	}
+
+	/**
+	 * get the arraylist of this photo
+	 * 
+	 * @return the list of Photo that this System contains
+	 */
+
+	public static ArrayList<Photo> getSystemPhotoList() {
+		return systemPhotoList;
+	}
+
+	/**
+	 * get the logger which contains the renaming actions done in this System
+	 * 
+	 * @return the Logger that kep tracks of all renaiming actions
+	 */
+
+	public static Logger getRenaminglog() {
+		return renamingLog;
 	}
 
 }
