@@ -1,5 +1,5 @@
 # photoRenamer
-## School project for course CSC207 Software design, worked with another teammate Marshall Zhao.
+## Course project, worked with another teammate Marshall Zhao.
 
 The purpose of this project was to design a software that helps users view, rename and manage their local pictures(eg. JPEG files) by adding personalized (textual) tags to them.  
 
